@@ -1,2 +1,8 @@
-package parser;public class Parser {
+package parser;
+
+public class Parser {
+    public void parse (){
+
+    }
+
 }
