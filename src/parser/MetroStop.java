@@ -1,5 +1,7 @@
 package parser;
 
+import java.util.Objects;
+
 public class MetroStop {
     private int id;
     private double latitude;
@@ -20,8 +22,8 @@ public class MetroStop {
 
     public MetroStop(String[] list_args) {
         this.id = Integer.parseInt(list_args[0]);
-        this.longitude = Double.parseDouble(list_args[1]);
-        this.latitude = Double.parseDouble(list_args[2]);
+        this.latitude = Double.parseDouble(list_args[1]);
+        this.longitude = Double.parseDouble(list_args[2]);
         this.nom = list_args[3];
         this.arrondissement = list_args[4];
         this.type = list_args[5];
@@ -82,4 +84,17 @@ public class MetroStop {
         return "MetroStop n°" + id + " : latitude = " + latitude + ", longitude = " + longitude + ", nom = " + nom + ", arrondissement = " + arrondissement + ", type = " + type;
     }
 
+    // Méthodes à redefinir obligatoirement pour les comparaisons...
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MetroStop metroStop = (MetroStop) o;
+        return id == metroStop.id && Double.compare(metroStop.latitude, latitude) == 0 && Double.compare(metroStop.longitude, longitude) == 0 && nom.equals(metroStop.nom) && arrondissement.equals(metroStop.arrondissement) && type.equals(metroStop.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, latitude, longitude, nom, arrondissement, type);
+    }
 }
