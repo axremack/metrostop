@@ -4,6 +4,8 @@ import org.junit.Test;
 import parser.MetroStop;
 import parser.Parser;
 
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +15,6 @@ import static org.junit.Assert.assertNotEquals;
 public class ParserTest extends TestCase {
     public String mockedFile = "tests/mockedFile.csv";
     public String emptyFile = "tests/emptyFile.csv";
-
-    // Cases covered by testFile.csv :
-    //      - Empty line
-    //      - Bad separator
-    //      - Stops that ar not "metro" type
-    public String badFile = "tests/badFile.csv";
-
     public List<MetroStop> listMetro;
 
     // Les deux méthodes suivantes servent à empêcher les effets de bord
@@ -48,45 +43,79 @@ public class ParserTest extends TestCase {
     public void testParse() {
         List<MetroStop> list = new ArrayList<>();
         Parser p = new Parser(mockedFile);
+
         try {
             p.parse(list);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         assertEquals(listMetro, list);
     }
 
     // Tests des cas limites
-    /*
     @Test
     public void testParseEmptyFile() {
         List<MetroStop> list = new ArrayList<>();
         Parser p = new Parser(emptyFile);
+
         try {
             p.parse(list);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        assertEquals(listMetro, list);
+        assertTrue(list.isEmpty()); // La liste de MetroStop est vide
     }
-    */
 
-    /*
     @Test
-    public void testParseBadFile() {
+    // Si les séparateurs de données sur la ligne ne sont pas les bons, elle n'est pas traitée
+    public void testLineSeparator() {
         List<MetroStop> list = new ArrayList<>();
-        Parser p = new Parser(badFile);
+        Reader r = new StringReader("1975;2.33871281165883;48.8844176451841;Abbesses;PARIS-18EME;metro");
+        Parser p = new Parser(r);
+
         try {
             p.parse(list);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        assertEquals(listMetro, list);
+        assertTrue(list.isEmpty()); // La liste de MetroStop est vide
     }
-     */
+
+    @Test
+    // Si le type de données sur la ligne n'est par correcte, elle n'est pas traitée
+    public void testLineDataType() {
+        List<MetroStop> list = new ArrayList<>();
+        Reader r = new StringReader("identifiant#2.33871281165883#48.8844176451841#Abbesses#PARIS-18EME#metro");
+        Parser p = new Parser(r);
+
+        try {
+            p.parse(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        assertTrue(list.isEmpty()); // La liste de MetroStop est vide
+    }
+
+    @Test
+    // Si la ligne n'a pas le bon nombre de données, elle n'est pas traitée
+    public void testLineDataNumber() {
+        List<MetroStop> list = new ArrayList<>();
+        Reader r = new StringReader("1975#2.33871281165883#48.8844176451841#Abbesses#PARIS-18EME");
+        Parser p = new Parser(r);
+
+        try {
+            p.parse(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        assertTrue(list.isEmpty()); // La liste de MetroStop est vide
+    }
+
+
+
 }
