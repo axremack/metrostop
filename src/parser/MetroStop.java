@@ -2,21 +2,29 @@ package parser;
 
 public class MetroStop {
     private int id;
-    private double longitude;
     private double latitude;
+    private double longitude;
     private String nom;
     private String arrondissement;
     private String type;
 
-
     // Constructeurs
-    public MetroStop(int id, double longitude, double latitude, String nom, String arrondissement, String type) {
+    public MetroStop(int id, double latitude, double longitude, String nom, String arrondissement, String type) {
         this.id = id;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
         this.nom = nom;
         this.arrondissement = arrondissement;
         this.type = type;
+    }
+
+    public MetroStop(String[] list_args) {
+        this.id = Integer.parseInt(list_args[0]);
+        this.longitude = Double.parseDouble(list_args[1]);
+        this.latitude = Double.parseDouble(list_args[2]);
+        this.nom = list_args[3];
+        this.arrondissement = list_args[4];
+        this.type = list_args[5];
     }
 
     // Getters et setters
@@ -24,12 +32,12 @@ public class MetroStop {
         return id;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
     public double getLatitude() {
         return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public String getNom() {
@@ -48,12 +56,12 @@ public class MetroStop {
         this.id = id;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public void setNom(String nom) {
@@ -71,7 +79,7 @@ public class MetroStop {
     // Méthodes
     @Override
     public String toString() {
-        return "MetroStop n°" + id + ": longitude = " + longitude + ", latitude = " + latitude + ", nom = " + nom + ", arrondissement = " + arrondissement + ", type = " + type;
+        return "MetroStop n°" + id + " : latitude = " + latitude + ", longitude = " + longitude + ", nom = " + nom + ", arrondissement = " + arrondissement + ", type = " + type;
     }
 
 }
