@@ -1,6 +1,6 @@
 package main;
 
-import parser.MetroStop;
+import metrostop.MetroStop;
 import parser.Parser;
 
 import java.util.List;
