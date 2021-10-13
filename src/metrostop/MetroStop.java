@@ -1,5 +1,6 @@
 package metrostop;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class MetroStop {
@@ -97,4 +98,27 @@ public class MetroStop {
     public int hashCode() {
         return Objects.hash(id, latitude, longitude, nom, arrondissement, type);
     }
+
+    // Comparateurs
+    public static class CompareId implements Comparator<MetroStop> {
+        public int compare(MetroStop a, MetroStop b){
+            return Integer.compare(a.id, b.id);
+        }
+    }
+
+    /*
+    public static class CompareDistrict implements Comparator<MetroStop> {
+        public int compare(MetroStop a, MetroStop b){
+            int var = a.arrondissement.compareTo(b.arrondissement);
+            return (var == 0) ? a.nom.compareTo(b.nom) : var;
+        }
+    }
+
+    public static class CompareName implements Comparator<MetroStop> {
+        public int compare(MetroStop a, MetroStop b){
+            int var = a.arrondissement.compareTo(b.arrondissement);
+            return (var == 0) ? a.nom.compareTo(b.nom) : var;
+        }
+    }
+    */
 }
