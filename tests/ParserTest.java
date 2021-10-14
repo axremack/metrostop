@@ -1,7 +1,7 @@
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import parser.MetroStop;
+import metrostop.MetroStop;
 import parser.Parser;
 
 import java.io.Reader;
@@ -13,9 +13,10 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class ParserTest extends TestCase {
-    public String mockedFile = "tests/mockedFile.csv";
-    public String emptyFile = "tests/emptyFile.csv";
-    public List<MetroStop> listMetro;
+    private String mockedFile = "tests/mockedFile.csv";
+    private String emptyFile = "tests/emptyFile.csv";
+    private String diverseTypesFile = "tests/diverseTypesFile.csv";
+    private List<MetroStop> listMetro;
 
     // Les deux méthodes suivantes servent à empêcher les effets de bord
     @Override
@@ -116,6 +117,19 @@ public class ParserTest extends TestCase {
         assertTrue(list.isEmpty()); // La liste de MetroStop est vide
     }
 
+    @Test
+    // Seuls les arrêts de metro sont pris en compte
+    public void testOnlyMetro(){
+        List<MetroStop> list = new ArrayList<>();
+        Parser p = new Parser(diverseTypesFile);
 
+        try {
+            p.parse(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        assertEquals(1, list.size()); // La liste de MetroStop n'a qu'un seul élément
+        assertEquals("metro", list.get(0).getType()); // L'unique élément de la liste est bien un arrêt de metro
+    }
 }

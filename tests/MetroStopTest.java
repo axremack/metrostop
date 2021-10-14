@@ -1,6 +1,6 @@
 import junit.framework.TestCase;
 import org.junit.Test;
-import parser.MetroStop;
+import metrostop.MetroStop;
 
 public class MetroStopTest extends TestCase {
     private MetroStop m;
