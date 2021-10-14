@@ -1,6 +1,7 @@
 package main;
 
 import metrostop.MetroStop;
+import metrostop.MetroStopManager;
 import parser.Parser;
 
 import java.util.List;
@@ -13,8 +14,7 @@ public class Main {
         List<MetroStop> list = new ArrayList<>();
         p.parse(list);
 
-        for (int i = 0; i < 20; i++) {
-            System.out.println(list.get(i));
-        }
+
+
     }
 }
