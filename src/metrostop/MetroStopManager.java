@@ -7,7 +7,6 @@ import java.util.List;
 public class MetroStopManager {
     public static List<MetroStop> listMetro;
 
-
     // Constructeur
     public MetroStopManager() {
         listMetro = new ArrayList<>();
@@ -16,7 +15,7 @@ public class MetroStopManager {
     // Méthodes
     public static void printMetroStopList(List<MetroStop> list){
         for (MetroStop metro : list){
-            System.out.println(metro.toString());
+            System.out.println(metro);
         }
     }
 
