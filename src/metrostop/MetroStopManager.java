@@ -20,6 +20,7 @@ public class MetroStopManager {
         }
     }
 
+    // Tris
     public static void sortById(List<MetroStop> list){
         Collections.sort(list, new MetroStop.CompareId());
     }
