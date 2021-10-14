@@ -14,6 +14,15 @@ public class Main {
         List<MetroStop> list = new ArrayList<>();
         p.parse(list);
 
+        MetroStopManager manager = new MetroStopManager();
+        manager.printMetroStopList(list);
+        System.out.println();
+        System.out.println();
+        manager.sortByName(list);
+        manager.printMetroStopList(list);
+
+
+
 
 
     }

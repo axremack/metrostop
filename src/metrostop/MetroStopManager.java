@@ -16,7 +16,7 @@ public class MetroStopManager {
     // Méthodes
     public static void printMetroStopList(List<MetroStop> list){
         for (MetroStop metro : list){
-            metro.toString();
+            System.out.println(metro.toString());
         }
     }
 
@@ -24,12 +24,11 @@ public class MetroStopManager {
         Collections.sort(list, new MetroStop.CompareId());
     }
 
-    /*
     public static void sortByDistrict(List<MetroStop> list){
         Collections.sort(list, new MetroStop.CompareDistrict());
     }
 
     public static void sortByName(List<MetroStop> list){
         Collections.sort(list, new MetroStop.CompareName());
-    }*/
+    }
 }

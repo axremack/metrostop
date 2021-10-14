@@ -106,7 +106,6 @@ public class MetroStop {
         }
     }
 
-    /*
     public static class CompareDistrict implements Comparator<MetroStop> {
         public int compare(MetroStop a, MetroStop b){
             int var = a.arrondissement.compareTo(b.arrondissement);
@@ -116,9 +115,8 @@ public class MetroStop {
 
     public static class CompareName implements Comparator<MetroStop> {
         public int compare(MetroStop a, MetroStop b){
-            int var = a.arrondissement.compareTo(b.arrondissement);
+            int var = a.nom.compareTo(b.nom);
             return (var == 0) ? a.nom.compareTo(b.nom) : var;
         }
     }
-    */
 }
