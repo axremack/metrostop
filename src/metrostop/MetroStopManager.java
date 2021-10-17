@@ -28,7 +28,10 @@ public class MetroStopManager {
         Collections.sort(list, new MetroStop.CompareDistrict());
     }
 
+    // Mauvaise compréhension du sujet
+    /*
     public static void sortByName(List<MetroStop> list){
         Collections.sort(list, new MetroStop.CompareName());
     }
+    */
 }

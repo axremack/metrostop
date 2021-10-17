@@ -13,8 +13,9 @@ public class MetroStopManagerTest extends TestCase {
     private MetroStopManager manager = new MetroStopManager();
 
     private MetroStop m1 = new MetroStop(1975,2.33871281165883,48.8844176451841,"Abbesses","PARIS-18EME","metro");
-    private MetroStop m2 = new MetroStop(1981,2.32674567371924,48.828398514348,"Aalésia","PARIS-14EME","metro");
+    private MetroStop m2 = new MetroStop(1981,2.32674567371924,48.828398514348,"Alésia","PARIS-14EME","metro");
     private MetroStop m3 = new MetroStop(1978,2.3949898158233,48.8561744489676,"Alexandre-Dumas","PARIS-11EME","metro");
+    private MetroStop m4 = new MetroStop(1976,2.33871281165883,48.8844176451841,"Aaa","PARIS-18EME","metro");
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -30,6 +31,7 @@ public class MetroStopManagerTest extends TestCase {
         listMetro.add(m1);
         listMetro.add(m2);
         listMetro.add(m3);
+        listMetro.add(m4);
     }
 
     @Override
@@ -44,8 +46,9 @@ public class MetroStopManagerTest extends TestCase {
     public void testPrint() {
         manager.printMetroStopList(listMetro);
         assertEquals("MetroStop n°1975 : latitude = 2.33871281165883, longitude = 48.8844176451841, nom = Abbesses, arrondissement = PARIS-18EME, type = metro\n" +
-                        "MetroStop n°1981 : latitude = 2.32674567371924, longitude = 48.828398514348, nom = Aalésia, arrondissement = PARIS-14EME, type = metro\n" +
-                        "MetroStop n°1978 : latitude = 2.3949898158233, longitude = 48.8561744489676, nom = Alexandre-Dumas, arrondissement = PARIS-11EME, type = metro\n",
+                        "MetroStop n°1981 : latitude = 2.32674567371924, longitude = 48.828398514348, nom = Alésia, arrondissement = PARIS-14EME, type = metro\n" +
+                        "MetroStop n°1978 : latitude = 2.3949898158233, longitude = 48.8561744489676, nom = Alexandre-Dumas, arrondissement = PARIS-11EME, type = metro\n" +
+                        "MetroStop n°1976 : latitude = 2.33871281165883, longitude = 48.8844176451841, nom = Aaa, arrondissement = PARIS-18EME, type = metro\n",
                         outContent.toString());
     }
 
@@ -56,6 +59,7 @@ public class MetroStopManagerTest extends TestCase {
 
         // Ajout des MetroStop dans l'ordre croissant des identifiants
         listTest.add(m1);
+        listTest.add(m4);
         listTest.add(m3);
         listTest.add(m2);
 
@@ -67,15 +71,18 @@ public class MetroStopManagerTest extends TestCase {
     public void testSortByDistrict() {
         List<MetroStop> listTest = new ArrayList<>();
 
-        // Ajout des MetroStop dans l'ordre alphabétique des arrondissements
+        // Ajout des MetroStop dans l'ordre alphabétique des arrondissements puis par nom d'arrêt
         listTest.add(m3);
         listTest.add(m2);
+        listTest.add(m4);
         listTest.add(m1);
 
         manager.sortByDistrict(listMetro);
         assertEquals(listTest, listMetro);
     }
 
+    // Mauvaise compréhension du sujet
+    /*
     @Test
     public void testSortByName() {
         List<MetroStop> listTest = new ArrayList<>();
@@ -88,6 +95,6 @@ public class MetroStopManagerTest extends TestCase {
         manager.sortByName(listMetro);
         assertEquals(listTest, listMetro);
     }
-
+    */
 
 }

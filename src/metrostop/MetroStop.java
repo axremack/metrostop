@@ -113,10 +113,13 @@ public class MetroStop {
         }
     }
 
+    // Mauvaise compréhension du sujet
+    /*
     public static class CompareName implements Comparator<MetroStop> {
         public int compare(MetroStop a, MetroStop b){
             int var = a.nom.compareTo(b.nom);
             return (var == 0) ? a.nom.compareTo(b.nom) : var;
         }
     }
+    */
 }
