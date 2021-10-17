@@ -1,12 +1,11 @@
 package main;
-
 import metrostop.MetroStop;
 import metrostop.MetroStopManager;
 import parser.Parser;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Main {
     private static void printMenu() {

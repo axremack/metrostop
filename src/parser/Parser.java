@@ -1,16 +1,16 @@
 package parser;
 import metrostop.MetroStop;
-
 import java.io.Reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.List;
 
+
 public class Parser {
     private Reader reader;
     private BufferedReader br;
 
-    // Constructeur
+    // Constructeurs
     public Parser(String filepath){
         try {
             this.reader = new FileReader(filepath);
@@ -49,7 +49,7 @@ public class Parser {
 
         while (line != null) {
             String[] attrs = line.split("#");
-            if(attrs.length == 6) { // Vérification de nombre d'arguments
+            if(attrs.length == 6) { // Vérification du nombre d'arguments
                 if (attrs[5].equals("metro")) {
                     if(isInt(attrs[0]) && isDouble(attrs[1]) && isDouble(attrs[2])) { // Vérification du type des arguments
                         MetroStop m = new MetroStop(attrs);

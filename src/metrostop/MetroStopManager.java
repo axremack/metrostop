@@ -1,8 +1,8 @@
 package metrostop;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 public class MetroStopManager {
     public static List<MetroStop> listMetro;
@@ -27,11 +27,4 @@ public class MetroStopManager {
     public static void sortByDistrict(List<MetroStop> list){
         Collections.sort(list, new MetroStop.CompareDistrict());
     }
-
-    // Mauvaise compréhension du sujet
-    /*
-    public static void sortByName(List<MetroStop> list){
-        Collections.sort(list, new MetroStop.CompareName());
-    }
-    */
 }

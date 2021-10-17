@@ -2,11 +2,11 @@ import junit.framework.TestCase;
 import metrostop.MetroStop;
 import metrostop.MetroStopManager;
 import org.junit.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MetroStopManagerTest extends TestCase {
     private List<MetroStop> listMetro = new ArrayList<>();
@@ -80,21 +80,4 @@ public class MetroStopManagerTest extends TestCase {
         manager.sortByDistrict(listMetro);
         assertEquals(listTest, listMetro);
     }
-
-    // Mauvaise compréhension du sujet
-    /*
-    @Test
-    public void testSortByName() {
-        List<MetroStop> listTest = new ArrayList<>();
-
-        // Ajout des MetroStop dans l'ordre alphabétique des noms
-        listTest.add(m2);
-        listTest.add(m1);
-        listTest.add(m3);
-
-        manager.sortByName(listMetro);
-        assertEquals(listTest, listMetro);
-    }
-    */
-
 }

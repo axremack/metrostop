@@ -1,7 +1,7 @@
 package metrostop;
-
 import java.util.Comparator;
 import java.util.Objects;
+
 
 public class MetroStop {
     private int id;
@@ -112,14 +112,4 @@ public class MetroStop {
             return (var == 0) ? a.nom.compareTo(b.nom) : var;
         }
     }
-
-    // Mauvaise compréhension du sujet
-    /*
-    public static class CompareName implements Comparator<MetroStop> {
-        public int compare(MetroStop a, MetroStop b){
-            int var = a.nom.compareTo(b.nom);
-            return (var == 0) ? a.nom.compareTo(b.nom) : var;
-        }
-    }
-    */
 }

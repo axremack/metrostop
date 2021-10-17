@@ -1,16 +1,12 @@
 import junit.framework.TestCase;
 import org.junit.Test;
-
 import metrostop.MetroStop;
 import parser.Parser;
-
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class ParserTest extends TestCase {
     private String mockedFile = "tests/mockedFile.csv";
